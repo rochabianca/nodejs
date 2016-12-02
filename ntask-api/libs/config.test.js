@@ -24,6 +24,6 @@ module.exports = {
 			underscored: true
 		}
 	},
-	jwtSecret: key_teste;
+	jwtSecret: key_teste,
 	jwtSession: {session: false}
 };
