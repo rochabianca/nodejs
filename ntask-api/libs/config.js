@@ -1,3 +1,4 @@
+var key = require("./.gitignore/sk.js");
 module.exports = {
 	database: "ntask",
 	username: "",
@@ -8,5 +9,7 @@ module.exports = {
 		define: {
 			underscored: true
 		}
-	}
+	},
+	jwtSecret: key,
+	jwtSession: {session: false}
 };
