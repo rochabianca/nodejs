@@ -17,7 +17,7 @@ module.exports = {
 	password: "",
 	params: {
 		dialect: "sqlite",
-		storage: "ntask.squilite",
+		storage: "ntask.sqlite",
 		define: {
 			underscored: true
 		}
