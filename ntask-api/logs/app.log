@@ -1,0 +1,9 @@
+{"level":"info","message":"::ffff:127.0.0.1 - - [07/Dec/2016:13:39:49 +0000] \"GET / HTTP/1.1\" 304 -\n","timestamp":"2016-12-07T13:39:49.718Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [07/Dec/2016:13:39:49 +0000] \"GET /favicon.ico HTTP/1.1\" 404 24\n","timestamp":"2016-12-07T13:39:49.801Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [07/Dec/2016:13:39:55 +0000] \"GET /tasks HTTP/1.1\" 401 -\n","timestamp":"2016-12-07T13:39:55.244Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [07/Dec/2016:13:39:59 +0000] \"GET / HTTP/1.1\" 304 -\n","timestamp":"2016-12-07T13:39:59.227Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [07/Dec/2016:13:40:15 +0000] \"GET / HTTP/1.1\" 304 -\n","timestamp":"2016-12-07T13:40:15.145Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [07/Dec/2016:13:55:45 +0000] \"GET / HTTP/1.1\" 304 -\n","timestamp":"2016-12-07T13:55:45.616Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [07/Dec/2016:14:11:09 +0000] \"GET / HTTP/1.1\" 200 29\n","timestamp":"2016-12-07T14:11:09.841Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [07/Dec/2016:14:11:09 +0000] \"GET /favicon.ico HTTP/1.1\" 404 24\n","timestamp":"2016-12-07T14:11:09.920Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [07/Dec/2016:14:11:09 +0000] \"GET /favicon.ico HTTP/1.1\" 404 24\n","timestamp":"2016-12-07T14:11:09.949Z"}
