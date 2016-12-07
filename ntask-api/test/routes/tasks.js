@@ -11,8 +11,8 @@ describe("Routes: Tasks", () => {
     Users
       .destroy({where: {}})
       .then(() => Users.create({
-        name: "John",
-        email: "john@mail.net",
+        name: "Marcelinho",
+        email: "Marcelinho@mail.net",
         password: "12345"
       }))
       .then(user => {
