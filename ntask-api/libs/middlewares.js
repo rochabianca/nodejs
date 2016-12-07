@@ -3,6 +3,7 @@ var express = require('express');
 var morgan = require('morgan');
 var cors = require('cors');
 var compression = require('compression');
+var helmet = require('helmet');
 var logger = require('./logger.js')
 
 module.exports = app => {
@@ -15,7 +16,7 @@ module.exports = app => {
 			}
 		}
 	}));
-
+	app.use(helmet());
 	app.use(cors({
 		origin: ["http://localhost:3001"],
 		methods: ["GET", "POST", "PUT", "DELETE"],

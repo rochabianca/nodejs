@@ -7,3 +7,5 @@
 {"level":"info","message":"::ffff:127.0.0.1 - - [07/Dec/2016:14:11:09 +0000] \"GET / HTTP/1.1\" 200 29\n","timestamp":"2016-12-07T14:11:09.841Z"}
 {"level":"info","message":"::ffff:127.0.0.1 - - [07/Dec/2016:14:11:09 +0000] \"GET /favicon.ico HTTP/1.1\" 404 24\n","timestamp":"2016-12-07T14:11:09.920Z"}
 {"level":"info","message":"::ffff:127.0.0.1 - - [07/Dec/2016:14:11:09 +0000] \"GET /favicon.ico HTTP/1.1\" 404 24\n","timestamp":"2016-12-07T14:11:09.949Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [07/Dec/2016:14:16:08 +0000] \"GET / HTTP/1.1\" 304 -\n","timestamp":"2016-12-07T14:16:08.634Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [07/Dec/2016:14:16:13 +0000] \"GET / HTTP/1.1\" 304 -\n","timestamp":"2016-12-07T14:16:13.759Z"}
