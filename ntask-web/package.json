@@ -9,7 +9,6 @@
     "build": "browserify src -t public/js/app.js"
   },
   "author": "Bianca Rocha",
-  "license": "ISC",
   "dependencies": {
     "http-server": "^0.9.0",
     "browser-request": "^0.3.3",
