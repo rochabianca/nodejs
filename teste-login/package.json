@@ -1,0 +1,20 @@
+{
+  "name": "teste-cadastro",
+  "version": "1.0.0",
+  "description": "arquivo teste",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "express-session": "^1.14.2",
+    "favicon": "^0.0.2",
+    "fs": "^0.0.1-security",
+    "jade": "^1.11.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bianca Rocha",
+  "license": "ISC"
+}
