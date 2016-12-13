@@ -5,6 +5,8 @@ const connectionString = process.env.DATABASE_URL || 'postgres://bianca:1234@loc
 const client = new pg.Client(connectionString);
 client.connect();
 
+var retorno;
+
 var db =pgp(connectionString);
 
 function Cria(login, senha) {
@@ -18,35 +20,34 @@ function Procura(login, senha) {
 		.then(function(data) {
 		//console.log(data.login);
 		//console.log(data.senha);
-			return data.login;
+			retorno = true;
 		})
 		.catch(function(error) {
-			//
 			console.log("Login ou senha incorretos");
+			retorno = false;
 		});
 }
 
-function Atualiza(login, novaSenha) {
-	db.none("UPDATE clientes SET senha=($1) WHERE login=($2)", [novaSenha, login])
-		.then(function() {
-			console.log("senha trocada com sucesso");
-			return true;
+/*Gambiarrento pra carai mas é o que funciona no momento*/
+function Atualiza(login, senha, novaSenha) {
+	db.one("SELECT * FROM clientes WHERE login = $1 AND senha = $2",[login, senha])
+		.then(function(data) {
+			db.none("UPDATE clientes SET senha=($1) WHERE login=($2)", [novaSenha, login])
+				.then(function() {
+					console.log("senha trocada com sucesso");
+					return true;
+				})
+				.catch(function(error) {
+					console.log("ERROR", error.message || error);
+					console.log("Login incorreto");
+					return false;
+				});
 		})
 		.catch(function(error) {
 			console.log("ERROR", error.message || error);
-			console.log("Login incorreto");
 			return false;
 		});
 }
-
-/*Ainda não funcionando, necessario ajeitar as promises*/
-
-/*function Muda_Senha(login, senha, novaSenha) {
-	var verify = Procura(login, senha);
-	verify.then(Atualiza(login, novaSenha), function(error) {
-		console.log("ERROR", error.message || error);
-	});
-}*/
 
 function Deleta(login, senha) {
 	db.none("DELETE FROM clientes WHERE login=($1) AND senha=($2)", [login, senha])
@@ -59,4 +60,3 @@ function Deleta(login, senha) {
 			return false;
 		});
 }
-
