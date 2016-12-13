@@ -11,10 +11,12 @@
     "fs": "^0.0.1-security",
     "jade": "^1.11.0",
     "pg": "^6.1.0",
+    "pg-promise": "^5.5.0",
     "supervisor": "^0.12.0"
   },
   "devDependencies": {},
   "scripts": {
+    "start": "supervisor ./bin/www",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Bianca Rocha",
