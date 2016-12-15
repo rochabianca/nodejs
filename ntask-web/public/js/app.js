@@ -496,12 +496,12 @@ function b64_enc (data) {
 
 },{}],2:[function(require,module,exports){
 function E () {
-  // Keep this empty so it's easier to inherit from
+	// Keep this empty so it's easier to inherit from
   // (via https://github.com/lipsmack from https://github.com/scottcorgan/tiny-emitter/issues/3)
 }
 
 E.prototype = {
-  on: function (name, callback, ctx) {
+	on: function (name, callback, ctx) {
     var e = this.e || (this.e = {});
 
     (e[name] || (e[name] = [])).push({
@@ -565,46 +565,46 @@ module.exports = E;
 },{}],3:[function(require,module,exports){
 "use strict";
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _tasks = require("./components/tasks.js");
-
-var _tasks2 = _interopRequireDefault(_tasks);
-
-var _taskForm = require("./components/taskForm.js");
-
-var _taskForm2 = _interopRequireDefault(_taskForm);
-
-var _user = require("./components/user.js");
-
-var _user2 = _interopRequireDefault(_user);
-
-var _signin = require("./components/signin.js");
-
-var _signin2 = _interopRequireDefault(_signin);
-
-var _signup = require("./components/signup.js");
-
-var _signup2 = _interopRequireDefault(_signup);
-
-var _menu = require("./components/menu.js");
-
-var _menu2 = _interopRequireDefault(_menu);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var App = function () {
+var _componentsTasksJs = require("./components/tasks.js");
+
+var _componentsTasksJs2 = _interopRequireDefault(_componentsTasksJs);
+
+var _componentsTaskFormJs = require("./components/taskForm.js");
+
+var _componentsTaskFormJs2 = _interopRequireDefault(_componentsTaskFormJs);
+
+var _componentsUserJs = require("./components/user.js");
+
+var _componentsUserJs2 = _interopRequireDefault(_componentsUserJs);
+
+var _componentsSigninJs = require("./components/signin.js");
+
+var _componentsSigninJs2 = _interopRequireDefault(_componentsSigninJs);
+
+var _componentsSignupJs = require("./components/signup.js");
+
+var _componentsSignupJs2 = _interopRequireDefault(_componentsSignupJs);
+
+var _componentsMenuJs = require("./components/menu.js");
+
+var _componentsMenuJs2 = _interopRequireDefault(_componentsMenuJs);
+
+var App = (function () {
   function App(body, footer) {
     _classCallCheck(this, App);
 
-    this.signin = new _signin2.default(body);
-    this.signup = new _signup2.default(body);
-    this.tasks = new _tasks2.default(body);
-    this.taskForm = new _taskForm2.default(body);
-    this.user = new _user2.default(body);
-    this.menu = new _menu2.default(footer);
+    this.signin = new _componentsSigninJs2["default"](body);
+    this.signup = new _componentsSignupJs2["default"](body);
+    this.tasks = new _componentsTasksJs2["default"](body);
+    this.taskForm = new _componentsTaskFormJs2["default"](body);
+    this.user = new _componentsUserJs2["default"](body);
+    this.menu = new _componentsMenuJs2["default"](footer);
   }
 
   _createClass(App, [{
@@ -629,7 +629,7 @@ var App = function () {
       var _this = this;
 
       this.signin.on("error", function () {
-        return alert("Authentication error");
+        return alert("Erro de autenticação");
       });
       this.signin.on("signin", function (token) {
         localStorage.setItem("token", "JWT " + token);
@@ -646,10 +646,10 @@ var App = function () {
       var _this2 = this;
 
       this.signup.on("error", function () {
-        return alert("Register error");
+        return alert("Erro no cadastro");
       });
       this.signup.on("signup", function (user) {
-        alert(user.name + " you were registered!");
+        alert(user.name + " você foi cadastrado com sucesso!");
         _this2.signin.render();
       });
     }
@@ -659,13 +659,13 @@ var App = function () {
       var _this3 = this;
 
       this.tasks.on("error", function () {
-        return alert("Task list error");
+        return alert("Erro ao listar tarefas");
       });
       this.tasks.on("remove-error", function () {
-        return alert("Task delete error");
+        return alert("Erro ao excluir");
       });
       this.tasks.on("update-error", function () {
-        return alert("Task update error");
+        return alert("Erro ao atualizar");
       });
       this.tasks.on("remove", function () {
         return _this3.tasks.render();
@@ -680,7 +680,7 @@ var App = function () {
       var _this4 = this;
 
       this.taskForm.on("error", function () {
-        return alert("Task register error");
+        return alert("Erro ao cadastrar tarefa");
       });
       this.taskForm.on("submit", function () {
         _this4.menu.render("tasks");
@@ -693,13 +693,13 @@ var App = function () {
       var _this5 = this;
 
       this.user.on("error", function () {
-        return alert("User load error");
+        return alert("Erro carregar usuário");
       });
       this.user.on("remove-error", function () {
-        return alert("Cancel account error");
+        return alert("Erro ao excluir conta");
       });
       this.user.on("remove-account", function () {
-        alert("So sad! You are leaving us :(");
+        alert("Que pena! Sua conta foi excluída.");
         localStorage.clear();
         _this5.menu.clear();
         _this5.signin.render();
@@ -723,47 +723,45 @@ var App = function () {
   }]);
 
   return App;
-}();
+})();
 
 module.exports = App;
 
 },{"./components/menu.js":4,"./components/signin.js":5,"./components/signup.js":6,"./components/taskForm.js":7,"./components/tasks.js":8,"./components/user.js":9}],4:[function(require,module,exports){
 "use strict";
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _ntask = require("../ntask.js");
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
-var _ntask2 = _interopRequireDefault(_ntask);
-
-var _footer = require("../templates/footer.js");
-
-var _footer2 = _interopRequireDefault(_footer);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Menu = function (_NTask) {
+var _ntaskJs = require("../ntask.js");
+
+var _ntaskJs2 = _interopRequireDefault(_ntaskJs);
+
+var _templatesFooterJs = require("../templates/footer.js");
+
+var _templatesFooterJs2 = _interopRequireDefault(_templatesFooterJs);
+
+var Menu = (function (_NTask) {
   _inherits(Menu, _NTask);
 
   function Menu(body) {
     _classCallCheck(this, Menu);
 
-    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Menu).call(this));
-
-    _this.body = body;
-    return _this;
+    _get(Object.getPrototypeOf(Menu.prototype), "constructor", this).call(this);
+    this.body = body;
   }
 
   _createClass(Menu, [{
     key: "render",
     value: function render(path) {
-      this.body.innerHTML = _footer2.default.render(path);
+      this.body.innerHTML = _templatesFooterJs2["default"].render(path);
       this.addEventListener();
     }
   }, {
@@ -780,7 +778,7 @@ var Menu = function (_NTask) {
   }, {
     key: "pathsClick",
     value: function pathsClick() {
-      var _this2 = this;
+      var _this = this;
 
       var links = this.body.querySelectorAll("[data-path]");
       for (var i = 0, max = links.length; i < max; i++) {
@@ -788,65 +786,63 @@ var Menu = function (_NTask) {
           e.preventDefault();
           var link = e.target.parentElement;
           var path = link.getAttribute("data-path");
-          _this2.emit("click", path);
+          _this.emit("click", path);
         });
       }
     }
   }, {
     key: "logoutClick",
     value: function logoutClick() {
-      var _this3 = this;
+      var _this2 = this;
 
       var link = this.body.querySelector("[data-logout]");
       link.addEventListener("click", function (e) {
         e.preventDefault();
-        _this3.emit("logout");
+        _this2.emit("logout");
       });
     }
   }]);
 
   return Menu;
-}(_ntask2.default);
+})(_ntaskJs2["default"]);
 
 module.exports = Menu;
 
 },{"../ntask.js":10,"../templates/footer.js":11}],5:[function(require,module,exports){
 "use strict";
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _ntask = require("../ntask.js");
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
-var _ntask2 = _interopRequireDefault(_ntask);
-
-var _signin = require("../templates/signin.js");
-
-var _signin2 = _interopRequireDefault(_signin);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Signin = function (_NTask) {
+var _ntaskJs = require("../ntask.js");
+
+var _ntaskJs2 = _interopRequireDefault(_ntaskJs);
+
+var _templatesSigninJs = require("../templates/signin.js");
+
+var _templatesSigninJs2 = _interopRequireDefault(_templatesSigninJs);
+
+var Signin = (function (_NTask) {
   _inherits(Signin, _NTask);
 
   function Signin(body) {
     _classCallCheck(this, Signin);
 
-    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Signin).call(this));
-
-    _this.body = body;
-    return _this;
+    _get(Object.getPrototypeOf(Signin.prototype), "constructor", this).call(this);
+    this.body = body;
   }
 
   _createClass(Signin, [{
     key: "render",
     value: function render() {
-      this.body.innerHTML = _signin2.default.render();
+      this.body.innerHTML = _templatesSigninJs2["default"].render();
       this.body.querySelector("[data-email]").focus();
       this.addEventListener();
     }
@@ -859,7 +855,7 @@ var Signin = function (_NTask) {
   }, {
     key: "formSubmit",
     value: function formSubmit() {
-      var _this2 = this;
+      var _this = this;
 
       var form = this.body.querySelector("form");
       form.addEventListener("submit", function (e) {
@@ -868,18 +864,18 @@ var Signin = function (_NTask) {
         var password = e.target.querySelector("[data-password]");
         var opts = {
           method: "POST",
-          url: _this2.URL + "/token",
+          url: _this.URL + "/token",
           json: true,
           body: {
             email: email.value,
             password: password.value
           }
         };
-        _this2.request(opts, function (err, resp, data) {
+        _this.request(opts, function (err, resp, data) {
           if (err || resp.status === 401) {
-            _this2.emit("error", err);
+            _this.emit("error", err);
           } else {
-            _this2.emit("signin", data.token);
+            _this.emit("signin", data.token);
           }
         });
       });
@@ -887,58 +883,56 @@ var Signin = function (_NTask) {
   }, {
     key: "signupClick",
     value: function signupClick() {
-      var _this3 = this;
+      var _this2 = this;
 
       var signup = this.body.querySelector("[data-signup]");
       signup.addEventListener("click", function (e) {
         e.preventDefault();
-        _this3.emit("signup");
+        _this2.emit("signup");
       });
     }
   }]);
 
   return Signin;
-}(_ntask2.default);
+})(_ntaskJs2["default"]);
 
 module.exports = Signin;
 
-},{"../ntask.js":10,"../templates/signin.js":12}],6:[function(require,module,exports){
+},{"../ntask.js":10,"../templates/signin.js":13}],6:[function(require,module,exports){
 "use strict";
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _ntask = require("../ntask.js");
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
-var _ntask2 = _interopRequireDefault(_ntask);
-
-var _signup = require("../templates/signup.js");
-
-var _signup2 = _interopRequireDefault(_signup);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Signup = function (_NTask) {
+var _ntaskJs = require("../ntask.js");
+
+var _ntaskJs2 = _interopRequireDefault(_ntaskJs);
+
+var _templatesSignupJs = require("../templates/signup.js");
+
+var _templatesSignupJs2 = _interopRequireDefault(_templatesSignupJs);
+
+var Signup = (function (_NTask) {
   _inherits(Signup, _NTask);
 
   function Signup(body) {
     _classCallCheck(this, Signup);
 
-    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Signup).call(this));
-
-    _this.body = body;
-    return _this;
+    _get(Object.getPrototypeOf(Signup.prototype), "constructor", this).call(this);
+    this.body = body;
   }
 
   _createClass(Signup, [{
     key: "render",
     value: function render() {
-      this.body.innerHTML = _signup2.default.render();
+      this.body.innerHTML = _templatesSignupJs2["default"].render();
       this.body.querySelector("[data-name]").focus();
       this.addEventListener();
     }
@@ -950,7 +944,7 @@ var Signup = function (_NTask) {
   }, {
     key: "formSubmit",
     value: function formSubmit() {
-      var _this2 = this;
+      var _this = this;
 
       var form = this.body.querySelector("form");
       form.addEventListener("submit", function (e) {
@@ -960,7 +954,7 @@ var Signup = function (_NTask) {
         var password = e.target.querySelector("[data-password]");
         var opts = {
           method: "POST",
-          url: _this2.URL + "/users",
+          url: _this.URL + "/users",
           json: true,
           body: {
             name: name.value,
@@ -968,11 +962,11 @@ var Signup = function (_NTask) {
             password: password.value
           }
         };
-        _this2.request(opts, function (err, resp, data) {
+        _this.request(opts, function (err, resp, data) {
           if (err || resp.status === 412) {
-            _this2.emit("error", err);
+            _this.emit("error", err);
           } else {
-            _this2.emit("signup", data);
+            _this.emit("signup", data);
           }
         });
       });
@@ -980,47 +974,45 @@ var Signup = function (_NTask) {
   }]);
 
   return Signup;
-}(_ntask2.default);
+})(_ntaskJs2["default"]);
 
 module.exports = Signup;
 
-},{"../ntask.js":10,"../templates/signup.js":13}],7:[function(require,module,exports){
+},{"../ntask.js":10,"../templates/signup.js":14}],7:[function(require,module,exports){
 "use strict";
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _ntask = require("../ntask.js");
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
-var _ntask2 = _interopRequireDefault(_ntask);
-
-var _taskForm = require("../templates/taskForm.js");
-
-var _taskForm2 = _interopRequireDefault(_taskForm);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var TaskForm = function (_NTask) {
+var _ntaskJs = require("../ntask.js");
+
+var _ntaskJs2 = _interopRequireDefault(_ntaskJs);
+
+var _templatesTaskFormJs = require("../templates/taskForm.js");
+
+var _templatesTaskFormJs2 = _interopRequireDefault(_templatesTaskFormJs);
+
+var TaskForm = (function (_NTask) {
   _inherits(TaskForm, _NTask);
 
   function TaskForm(body) {
     _classCallCheck(this, TaskForm);
 
-    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(TaskForm).call(this));
-
-    _this.body = body;
-    return _this;
+    _get(Object.getPrototypeOf(TaskForm.prototype), "constructor", this).call(this);
+    this.body = body;
   }
 
   _createClass(TaskForm, [{
     key: "render",
     value: function render() {
-      this.body.innerHTML = _taskForm2.default.render();
+      this.body.innerHTML = _templatesTaskFormJs2["default"].render();
       this.body.querySelector("[data-task]").focus();
       this.addEventListener();
     }
@@ -1032,7 +1024,7 @@ var TaskForm = function (_NTask) {
   }, {
     key: "formSubmit",
     value: function formSubmit() {
-      var _this2 = this;
+      var _this = this;
 
       var form = this.body.querySelector("form");
       form.addEventListener("submit", function (e) {
@@ -1040,7 +1032,7 @@ var TaskForm = function (_NTask) {
         var task = e.target.querySelector("[data-task]");
         var opts = {
           method: "POST",
-          url: _this2.URL + "/tasks",
+          url: _this.URL + "/tasks",
           json: true,
           headers: {
             authorization: localStorage.getItem("token")
@@ -1049,11 +1041,11 @@ var TaskForm = function (_NTask) {
             title: task.value
           }
         };
-        _this2.request(opts, function (err, resp, data) {
+        _this.request(opts, function (err, resp, data) {
           if (err || resp.status === 412) {
-            _this2.emit("error");
+            _this.emit("error");
           } else {
-            _this2.emit("submit");
+            _this.emit("submit");
           }
         });
       });
@@ -1061,41 +1053,43 @@ var TaskForm = function (_NTask) {
   }]);
 
   return TaskForm;
-}(_ntask2.default);
+})(_ntaskJs2["default"]);
 
 module.exports = TaskForm;
 
-},{"../ntask.js":10,"../templates/taskForm.js":14}],8:[function(require,module,exports){
+},{"../ntask.js":10,"../templates/taskForm.js":15}],8:[function(require,module,exports){
 "use strict";
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _ntask = require("../ntask.js");
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
-var _ntask2 = _interopRequireDefault(_ntask);
-
-var _tasks = require("../templates/tasks.js");
-
-var _tasks2 = _interopRequireDefault(_tasks);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Tasks = function (_NTask) {
+var _ntaskJs = require("../ntask.js");
+
+var _ntaskJs2 = _interopRequireDefault(_ntaskJs);
+
+var _templatesTasksJs = require("../templates/tasks.js");
+
+var _templatesTasksJs2 = _interopRequireDefault(_templatesTasksJs);
+
+var _templatesLoadingJs = require("../templates/loading.js");
+
+var _templatesLoadingJs2 = _interopRequireDefault(_templatesLoadingJs);
+
+var Tasks = (function (_NTask) {
   _inherits(Tasks, _NTask);
 
   function Tasks(body) {
     _classCallCheck(this, Tasks);
 
-    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Tasks).call(this));
-
-    _this.body = body;
-    return _this;
+    _get(Object.getPrototypeOf(Tasks.prototype), "constructor", this).call(this);
+    this.body = body;
   }
 
   _createClass(Tasks, [{
@@ -1112,7 +1106,7 @@ var Tasks = function (_NTask) {
   }, {
     key: "renderTaskList",
     value: function renderTaskList() {
-      var _this2 = this;
+      var _this = this;
 
       var opts = {
         method: "GET",
@@ -1122,19 +1116,20 @@ var Tasks = function (_NTask) {
           authorization: localStorage.getItem("token")
         }
       };
+      this.body.innerHTML = _templatesLoadingJs2["default"].render();
       this.request(opts, function (err, resp, data) {
         if (err) {
-          _this2.emit("error", err);
+          _this.emit("error", err);
         } else {
-          _this2.body.innerHTML = _tasks2.default.render(data);
-          _this2.addEventListener();
+          _this.body.innerHTML = _templatesTasksJs2["default"].render(data);
+          _this.addEventListener();
         }
       });
     }
   }, {
     key: "taskDoneCheckbox",
     value: function taskDoneCheckbox() {
-      var _this3 = this;
+      var _this2 = this;
 
       var dones = this.body.querySelectorAll("[data-done]");
       for (var i = 0, max = dones.length; i < max; i++) {
@@ -1144,18 +1139,20 @@ var Tasks = function (_NTask) {
           var done = e.target.getAttribute("data-task-done");
           var opts = {
             method: "PUT",
-            url: _this3.URL + "/tasks/" + id,
+            url: _this2.URL + "/tasks/" + id,
             headers: {
               authorization: localStorage.getItem("token"),
               "Content-Type": "application/json"
             },
-            body: JSON.stringify({ done: !done })
+            body: JSON.stringify({
+              done: !done
+            })
           };
-          _this3.request(opts, function (err, resp, data) {
+          _this2.request(opts, function (err, resp, data) {
             if (err || resp.status === 412) {
-              _this3.emit("update-error", err);
+              _this2.emit("update-error", err);
             } else {
-              _this3.emit("update");
+              _this2.emit("update");
             }
           });
         });
@@ -1164,26 +1161,26 @@ var Tasks = function (_NTask) {
   }, {
     key: "taskRemoveClick",
     value: function taskRemoveClick() {
-      var _this4 = this;
+      var _this3 = this;
 
       var removes = this.body.querySelectorAll("[data-remove]");
       for (var i = 0, max = removes.length; i < max; i++) {
         removes[i].addEventListener("click", function (e) {
           e.preventDefault();
-          if (confirm("Do you really wanna delete this task?")) {
+          if (confirm("Deseja excluir esta tarefa?")) {
             var id = e.target.getAttribute("data-task-id");
             var opts = {
               method: "DELETE",
-              url: _this4.URL + "/tasks/" + id,
+              url: _this3.URL + "/tasks/" + id,
               headers: {
                 authorization: localStorage.getItem("token")
               }
             };
-            _this4.request(opts, function (err, resp, data) {
+            _this3.request(opts, function (err, resp, data) {
               if (err || resp.status === 412) {
-                _this4.emit("remove-error", err);
+                _this3.emit("remove-error", err);
               } else {
-                _this4.emit("remove");
+                _this3.emit("remove");
               }
             });
           }
@@ -1193,41 +1190,43 @@ var Tasks = function (_NTask) {
   }]);
 
   return Tasks;
-}(_ntask2.default);
+})(_ntaskJs2["default"]);
 
 module.exports = Tasks;
 
-},{"../ntask.js":10,"../templates/tasks.js":15}],9:[function(require,module,exports){
+},{"../ntask.js":10,"../templates/loading.js":12,"../templates/tasks.js":16}],9:[function(require,module,exports){
 "use strict";
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _ntask = require("../ntask.js");
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
-var _ntask2 = _interopRequireDefault(_ntask);
-
-var _user = require("../templates/user.js");
-
-var _user2 = _interopRequireDefault(_user);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var User = function (_NTask) {
+var _ntaskJs = require("../ntask.js");
+
+var _ntaskJs2 = _interopRequireDefault(_ntaskJs);
+
+var _templatesUserJs = require("../templates/user.js");
+
+var _templatesUserJs2 = _interopRequireDefault(_templatesUserJs);
+
+var _templatesLoadingJs = require("../templates/loading.js");
+
+var _templatesLoadingJs2 = _interopRequireDefault(_templatesLoadingJs);
+
+var User = (function (_NTask) {
   _inherits(User, _NTask);
 
   function User(body) {
     _classCallCheck(this, User);
 
-    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(User).call(this));
-
-    _this.body = body;
-    return _this;
+    _get(Object.getPrototypeOf(User.prototype), "constructor", this).call(this);
+    this.body = body;
   }
 
   _createClass(User, [{
@@ -1243,7 +1242,7 @@ var User = function (_NTask) {
   }, {
     key: "renderUserData",
     value: function renderUserData() {
-      var _this2 = this;
+      var _this = this;
 
       var opts = {
         method: "GET",
@@ -1253,36 +1252,37 @@ var User = function (_NTask) {
           authorization: localStorage.getItem("token")
         }
       };
+      this.body.innerHTML = _templatesLoadingJs2["default"].render();
       this.request(opts, function (err, resp, data) {
         if (err || resp.status === 412) {
-          _this2.emit("error", err);
+          _this.emit("error", err);
         } else {
-          _this2.body.innerHTML = _user2.default.render(data);
-          _this2.addEventListener();
+          _this.body.innerHTML = _templatesUserJs2["default"].render(data);
+          _this.addEventListener();
         }
       });
     }
   }, {
     key: "userCancelClick",
     value: function userCancelClick() {
-      var _this3 = this;
+      var _this2 = this;
 
       var button = this.body.querySelector("[data-remove-account]");
       button.addEventListener("click", function (e) {
         e.preventDefault();
-        if (confirm("This will cancel your account, are you sure?")) {
+        if (confirm("Tem certeza que deseja excluir sua conta?")) {
           var opts = {
             method: "DELETE",
-            url: _this3.URL + "/user",
+            url: _this2.URL + "/user",
             headers: {
               authorization: localStorage.getItem("token")
             }
           };
-          _this3.request(opts, function (err, resp, data) {
+          _this2.request(opts, function (err, resp, data) {
             if (err || resp.status === 412) {
-              _this3.emit("remove-error", err);
+              _this2.emit("remove-error", err);
             } else {
-              _this3.emit("remove-account");
+              _this2.emit("remove-account");
             }
           });
         }
@@ -1291,12 +1291,20 @@ var User = function (_NTask) {
   }]);
 
   return User;
-}(_ntask2.default);
+})(_ntaskJs2["default"]);
 
 module.exports = User;
 
-},{"../ntask.js":10,"../templates/user.js":16}],10:[function(require,module,exports){
+},{"../ntask.js":10,"../templates/loading.js":12,"../templates/user.js":17}],10:[function(require,module,exports){
 "use strict";
+
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var _tinyEmitter = require("tiny-emitter");
 
@@ -1306,29 +1314,19 @@ var _browserRequest = require("browser-request");
 
 var _browserRequest2 = _interopRequireDefault(_browserRequest);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var NTask = function (_TinyEmitter) {
+var NTask = (function (_TinyEmitter) {
   _inherits(NTask, _TinyEmitter);
 
   function NTask() {
     _classCallCheck(this, NTask);
 
-    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(NTask).call(this));
-
-    _this.request = _browserRequest2.default;
-    _this.URL = "https://localhost:3000";
-    return _this;
+    _get(Object.getPrototypeOf(NTask.prototype), "constructor", this).call(this);
+    this.request = _browserRequest2["default"];
+    this.URL = "https://localhost:3000";
   }
 
   return NTask;
-}(_tinyEmitter2.default);
+})(_tinyEmitter2["default"]);
 
 module.exports = NTask;
 
@@ -1346,24 +1344,31 @@ exports.render = function (path) {
 "use strict";
 
 exports.render = function () {
-  return "<form>\n    <div class=\"list\">\n      <label class=\"item item-input item-stacked-label\">\n        <span class=\"input-label\">Email</span>\n        <input type=\"text\" data-email>\n      </label>\n      <label class=\"item item-input item-stacked-label\">\n        <span class=\"input-label\">Password</span>\n        <input type=\"password\" data-password>\n      </label>\n    </div>\n    <div class=\"padding\">\n      <button class=\"button button-positive button-block\">\n        <i class=\"ion-home\"></i> Login\n      </button>\n    </div>\n  </form>\n  <div class=\"padding\">\n    <button class=\"button button-block\" data-signup>\n      <i class=\"ion-person-add\"></i> Sign up\n    </button>\n  </div>";
+  return "<h4 class=\"text-center\">Carregando...</h4>";
 };
 
 },{}],13:[function(require,module,exports){
 "use strict";
 
 exports.render = function () {
-  return "<form>\n    <div class=\"list\">\n      <label class=\"item item-input item-stacked-label\">\n        <span class=\"input-label\">Name</span>\n        <input type=\"text\" data-name>\n      </label>\n      <label class=\"item item-input item-stacked-label\">\n        <span class=\"input-label\">Email</span>\n        <input type=\"text\" data-email>\n      </label>\n      <label class=\"item item-input item-stacked-label\">\n        <span class=\"input-label\">Password</span>\n        <input type=\"password\" data-password>\n      </label>\n    </div>\n    <div class=\"padding\">\n      <button class=\"button button-positive button-block\">\n        <i class=\"ion-thumbsup\"></i> Register\n      </button>\n    </div>\n  </form>";
+  return "<form>\n    <div class=\"list\">\n      <label class=\"item item-input item-stacked-label\">\n        <span class=\"input-label\">Email</span>\n        <input type=\"text\" data-email>\n      </label>\n      <label class=\"item item-input item-stacked-label\">\n        <span class=\"input-label\">Senha</span>\n        <input type=\"password\" data-password>\n      </label>\n    </div>\n    <div class=\"padding\">\n      <button class=\"button button-positive button-block\">\n        <i class=\"ion-home\"></i> Entrar\n      </button>\n    </div>\n  </form>\n  <div class=\"padding\">\n    <button class=\"button button-block\" data-signup>\n      <i class=\"ion-person-add\"></i> Cadastrar\n    </button>\n  </div>";
 };
 
 },{}],14:[function(require,module,exports){
 "use strict";
 
 exports.render = function () {
-  return "<form>\n    <div class=\"list\">\n      <label class=\"item item-input item-stacked-label\">\n        <span class=\"input-label\">Task</span>\n        <input type=\"text\" data-task>\n      </label>\n    </div>\n    <div class=\"padding\">\n      <button class=\"button button-positive button-block\">\n        <i class=\"ion-compose\"></i> Add\n      </button>\n    </div>\n  </form>";
+  return "<form>\n    <div class=\"list\">\n      <label class=\"item item-input item-stacked-label\">\n        <span class=\"input-label\">Nome</span>\n        <input type=\"text\" data-name>\n      </label>\n      <label class=\"item item-input item-stacked-label\">\n        <span class=\"input-label\">Email</span>\n        <input type=\"text\" data-email>\n      </label>\n      <label class=\"item item-input item-stacked-label\">\n        <span class=\"input-label\">Senha</span>\n        <input type=\"password\" data-password>\n      </label>\n    </div>\n    <div class=\"padding\">\n      <button class=\"button button-positive button-block\">\n        <i class=\"ion-thumbsup\"></i> Cadastrar\n      </button>\n    </div>\n  </form>";
 };
 
 },{}],15:[function(require,module,exports){
+"use strict";
+
+exports.render = function () {
+  return "<form>\n    <div class=\"list\">\n      <label class=\"item item-input item-stacked-label\">\n        <span class=\"input-label\">Tarefa</span>\n        <input type=\"text\" data-task>\n      </label>\n    </div>\n    <div class=\"padding\">\n      <button class=\"button button-positive button-block\">\n        <i class=\"ion-compose\"></i> Salvar\n      </button>\n    </div>\n  </form>";
+};
+
+},{}],16:[function(require,module,exports){
 "use strict";
 
 var renderTasks = function renderTasks(tasks) {
@@ -1372,33 +1377,34 @@ var renderTasks = function renderTasks(tasks) {
     return "<li class=\"item item-icon-left item-button-right\">\n      <i class=\"icon ion-" + done + "\" data-done\n        data-task-done=\"" + (task.done ? 'done' : '') + "\"\n        data-task-id=\"" + task.id + "\"></i>\n      " + task.title + "\n      <button data-remove data-task-id=\"" + task.id + "\"\n        class=\"button button-assertive\">\n        <i class=\"ion-trash-a\"></i>\n      </button>\n    </li>";
   }).join("");
 };
+
 exports.render = function (tasks) {
   if (tasks && tasks.length) {
     return "<ul class=\"list\">" + renderTasks(tasks) + "</ul>";
   }
-  return "<h4 class=\"text-center\">The task list is empty</h4>";
-};
-
-},{}],16:[function(require,module,exports){
-"use strict";
-
-exports.render = function (user) {
-  return "<div class=\"list\">\n    <label class=\"item item-input item-stacked-label\">\n      <span class=\"input-label\">Name</span>\n      <small class=\"dark\">" + user.name + "</small>\n    </label>\n    <label class=\"item item-input item-stacked-label\">\n      <span class=\"input-label\">Email</span>\n      <small class=\"dark\">" + user.email + "</small>\n    </label>\n  </div>\n  <div class=\"padding\">\n    <button data-remove-account\n      class=\"button button-assertive button-block\">\n      <i class=\"ion-trash-a\"></i> Cancel account\n    </button>\n  </div>";
+  return "<h4 class=\"text-center\">Nenhuma tarefa ainda</h4>";
 };
 
 },{}],17:[function(require,module,exports){
 "use strict";
 
-var _app = require("./app.js");
+exports.render = function (user) {
+  return "<div class=\"list\">\n    <label class=\"item item-input item-stacked-label\">\n      <span class=\"input-label\">Nome</span>\n      <small class=\"dark\">" + user.name + "</small>\n    </label>\n    <label class=\"item item-input item-stacked-label\">\n      <span class=\"input-label\">Email</span>\n      <small class=\"dark\">" + user.email + "</small>\n    </label>\n  </div>\n  <div class=\"padding\">\n    <button data-remove-account\n      class=\"button button-assertive button-block\">\n      <i class=\"ion-trash-a\"></i> Excluir conta\n    </button>\n  </div>";
+};
 
-var _app2 = _interopRequireDefault(_app);
+},{}],18:[function(require,module,exports){
+"use strict";
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+var _appJs = require("./app.js");
+
+var _appJs2 = _interopRequireDefault(_appJs);
 
 window.onload = function () {
   var main = document.querySelector("main");
   var footer = document.querySelector("footer");
-  new _app2.default(main, footer).init();
+  new _appJs2["default"](main, footer).init();
 };
 
-},{"./app.js":3}]},{},[17]);
+},{"./app.js":3}]},{},[18]);
