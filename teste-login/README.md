@@ -2,15 +2,15 @@
 Projeto em NodeJS para tentar implementar um sistema de login usando o banco de dados Postgresql
 
 ### Dependências:
-*body-parser
-*express
-*express-session
-*favicon
-*fs
-*jade
-*pg
-*pg-promise
-*supervisor
+* body-parser
+* express
+* express-session
+* favicon
+* fs
+* jade
+* pg
+* pg-promise
+* supervisor
 
 ### Instalando:
 * Clone o repositório na pasta de sua preferência
